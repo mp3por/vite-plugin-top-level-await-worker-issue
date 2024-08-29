@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { crx } from '@crxjs/vite-plugin'
+import { crx, ManifestV3Export } from '@crxjs/vite-plugin'
 import manifest from './manifest.json'
 import topLevelAwait from "vite-plugin-top-level-await"
 
@@ -14,8 +14,14 @@ export default defineConfig({
       promiseImportName: i => `__tla_${i}`
     }),
     react(),
-    crx({ manifest }),
+    crx({ manifest: manifest as ManifestV3Export }),
   ],
+  build: {
+    sourcemap: true,
+    emptyOutDir: true,
+    target: 'es2022',
+    minify: false,
+  },
   server: {
     port: 5173,
     strictPort: true,

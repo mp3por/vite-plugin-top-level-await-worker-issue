@@ -2,10 +2,10 @@
   "manifest_version": 3,
   "name": "CRXJS React Vite Example",
   "version": "1.0.0",
-  "action": { "default_popup": "src/index.html" },
+  "action": { "default_popup": "src/pages/popup/index.html" },
 
   "background": {
-    "service_worker": "src/background.ts",
+    "service_worker": "src/pages/background.ts",
     "type": "module"
   }
 }
